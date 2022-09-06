@@ -1,0 +1,29 @@
+def encrypt_caesar(plaintext: str, shift: int = 3) -> str: 
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
+    lower_alphabet = alphabet.lower() 
+    key = shift % len(alphabet) 
+    list_plaintext = list(plaintext) 
+    ciphertext = '' 
+    for i in range(len(list_plaintext)): 
+        if not list_plaintext[i] in alphabet and not list_plaintext[i] in lower_alphabet: 
+            ciphertext = ciphertext + list_plaintext[i] 
+        elif list_plaintext[i] == list_plaintext[i].upper(): 
+            ciphertext = ciphertext + alphabet[(alphabet.index(list_plaintext[i]) + key) % len(alphabet)] 
+        else: 
+            ciphertext = ciphertext + lower_alphabet[(lower_alphabet.index(list_plaintext[i]) + key) % len(alphabet)] 
+    return ciphertext
+    
+def decrypt_caesar(ciphertext: str, shift: int = 3) -> str: 
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
+    lower_alphabet = alphabet.lower() 
+    key = shift % len(alphabet) 
+    list_plaintext = list(ciphertext) 
+    plaintext = '' 
+    for i in range(len(list_plaintext)): 
+        if not list_plaintext[i] in alphabet and not list_plaintext[i] in lower_alphabet: 
+            plaintext = plaintext + list_plaintext[i] 
+        elif list_plaintext[i] == list_plaintext[i].upper(): 
+            plaintext = plaintext + alphabet[(alphabet.index(list_plaintext[i]) - key) % len(alphabet)] 
+        else: 
+            plaintext = plaintext + lower_alphabet[(lower_alphabet.index(list_plaintext[i]) - key) % len(alphabet)] 
+    return plaintext
