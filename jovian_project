@@ -1,0 +1,27 @@
+def longestCommonPrefix(strs):
+    prefix=[]
+    for x in zip(*strs):
+        if len(set(x)) == 1:
+            prefix.append(x[0])
+        else:
+            break
+    return "".join(prefix) 
+strs = ["flower","flow","flight"]
+print(longestCommonPrefix(strs))
+
+Постановка задачи: Write a function to find the longest common prefix string amongst an array of strings.
+Источник: https://leetcode.com/problems/longest-common-prefix/
+
+вход1:  strs = ["flower","flow","flight"]
+вход2: strs = ["dog","racecar","car"]
+выход1:  "fl"
+выход2: ""
+
+Шаги:
+1. Create a cycle with a counter over pairs of elements
+2. If the length of the set without repetitions for the counter is equal to one, add the element with the index of the counter to the result
+3. Otherwise, stop the loop
+4. Displaying the result
+
+Сложность:
+0(N)
