@@ -1,0 +1,32 @@
+#O(N^2)
+
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        result = []
+        num_lst = [0] * (len(nums)+1)
+        for num in nums:
+            num_lst[num] = 1
+        for index, numer in enumerate(num_lst):
+            if not numer:
+                result.append(index)
+        return result[0]
+        
+#O(N*lnN)
+
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        length = len(nums)
+        nums_sorted = sorted(nums)
+        for i in range(length):
+            if nums_sorted[i] != i:
+                return i
+        return length
+        
+#O(N)
+
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        length = len(nums)
+        amount = sum(nums)
+        total_amount = sum(range(length + 1))
+        return total_amount - amount
