@@ -1,0 +1,25 @@
+def encrypt_vigenere(plaintext: str, keyword: str) -> str: 
+    alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
+    key = [] 
+    lst = list(keyword.upper()) 
+    for i in range(len(lst)): 
+        key.append(alphabet.index(lst[i])) 
+    right_key = list(key) 
+    o_text = list(plaintext.upper()) 
+    ciphertext = '' 
+    for i in range(len(o_text)): 
+        ciphertext = ciphertext + alphabet[(alphabet.index(o_text[i]) + int(right_key[i % len(right_key)])) % len(alphabet)] 
+    return ciphertext 
+ 
+def decrypt_vigenere(ciphertext: str, keyword: str) -> str: 
+    alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
+    key = [] 
+    lst = list(keyword.upper()) 
+    for i in range(len(lst)): 
+        key.append(alphabet.index(lst[i])) 
+    right_key = list(key) 
+    o_text = list(ciphertext.upper()) 
+    plaintext = '' 
+    for i in range(len(o_text)): 
+        plaintext = plaintext + alphabet[(alphabet.index(o_text[i]) - int(right_key[i % len(right_key)])) % len(alphabet)] 
+    return plaintext
